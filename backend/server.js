@@ -2,13 +2,12 @@
 const express = require('express');
 const app = express();
 
-// Import the node-fetch module to make HTTP requests
-const fetch = require('node-fetch');
-app.use(fetch());
-
 // Import the cors module to allow cross-origin resource sharing
 const cors = require('cors');
 app.use(cors());
+
+// Import the node-fetch module to make HTTP requests
+const fetch = require('node-fetch');
 
 // Listen on port 3000 and when the server starts, log a message to the console
 app.listen(3000, () => {
