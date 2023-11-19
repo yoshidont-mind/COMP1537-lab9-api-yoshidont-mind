@@ -2,15 +2,23 @@
 const express = require('express');
 const app = express();
 
+// Import the node-fetch module to make HTTP requests
+const fetch = require('node-fetch');
+app.use(fetch());
+
+// Import the cors module to allow cross-origin resource sharing
+const cors = require('cors');
+app.use(cors());
+
 // Listen on port 3000 and when the server starts, log a message to the console
-app.listen(3000, () => {
-    console.log('Server is running on port 3000.');
-});
+// app.listen(3000, () => {
+//     console.log('Server is running on port 3000.');
+// });
 
 // Define a route handler for GET requests to the root URL ('/')
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + `/index.html`);
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + `/index.html`);
+// });
 
 // Apply middleware for parsing URL-encoded bodies (form data)
 app.use(express.urlencoded({ extended: true }))
