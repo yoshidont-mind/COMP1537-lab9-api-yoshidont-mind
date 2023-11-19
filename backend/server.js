@@ -11,9 +11,9 @@ const cors = require('cors');
 app.use(cors());
 
 // Listen on port 3000 and when the server starts, log a message to the console
-// app.listen(3000, () => {
-//     console.log('Server is running on port 3000.');
-// });
+app.listen(3000, () => {
+    console.log('Server is running on port 3000.');
+});
 
 // Define a route handler for GET requests to the root URL ('/')
 // app.get('/', (req, res) => {
