@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
 app.use(express.urlencoded({ extended: true }))
 
 // Define a route handler for POST requests to '/getCityWeather'
-app.post('/getCityWeather', async (req, res) => {
-    resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.cname}&appid=4280a84bdfd2271f09739c99ba7ae827&units=metric`)
+app.get('/getCityWeather', async (req, res) => {
+    resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.query.cname}&appid=4280a84bdfd2271f09739c99ba7ae827&units=metric`)
     jsonResp = await resp.json()
     res.send(jsonResp);
 });
