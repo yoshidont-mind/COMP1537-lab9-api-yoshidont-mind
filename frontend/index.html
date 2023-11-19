@@ -27,7 +27,7 @@
             document.getElementById("submitBtn").addEventListener("click", async () => {
                 event.preventDefault()
                 const city_name = document.getElementById("enter_city_here").value
-                let resp = await fetch(`http://localhost:3000/getCityWeather?cname=${city_name}`)
+                let resp = await fetch(`https://comp1537-lab9-api-yoshidont-mind.onrender.com/getCityWeather?cname=${city_name}`)
                 let respJson = await resp.json()
                 document.getElementById("result").innerHTML = `<img src="https://openweathermap.org/img/wn/${respJson.weather[0].icon}@2x.png">`
                 document.getElementById("result").innerHTML += `<br>${respJson.main.temp} ℃`
