@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- import bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/getCityWeather" method="post">
+        <label for="x"> Enter a city name</label>
+        <input id="enter_city_here" type="text" name="cname">
+        <input type="submit" value="Get the weather!" id="submitBtn">
+
+        <div id="result"></div>
+
+        <script>
+            document.getElementById("submitBtn").addEventListener("click", async () => {
+                event.preventDefault()
+                const city_name = document.getElementById("enter_city_here").value
+                const resp = await fetch(`http://localhost:3000/getCityWeather`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `cname=${encodeURIComponent(city_name)}`
+                });
+                respJson = await resp.json()
+                document.getElementById("result").innerHTML = `<img src="https://openweathermap.org/img/wn/${respJson.weather[0].icon}@2x.png">`
+                document.getElementById("result").innerHTML += `<br>${respJson.main.temp} ℃`
+                document.getElementById("result").innerHTML += `<br>${respJson.weather[0].description}`
+            })
+        </script>
+    </form>
+</body>
+
+</html>
