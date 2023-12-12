@@ -20,7 +20,7 @@ app.listen(3000, () => {
 // });
 
 // Apply middleware for parsing URL-encoded bodies (form data)
-app.use(express.urlencoded({ extended: true }))
+// app.use(express.urlencoded({ extended: true }))
 
 // Define a route handler for POST requests to '/getCityWeather'
 app.get('/getCityWeather', async (req, res) => {
